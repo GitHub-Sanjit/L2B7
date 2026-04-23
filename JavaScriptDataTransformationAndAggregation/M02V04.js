@@ -20,15 +20,38 @@
 
 // console.log(arr);
 
+// const range = (start, stop, step) =>
+//   Array.from(
+//     { length: Math.ceil((stop - start) / step) },
+//     (_, i) => start + i * step,
+//   );
+
+// console.log(range(0, 11, 2));
+
+const numbers = [1, 2, 5, 3, 7, 5];
+
+const hasEvenNumber = numbers.some((number) => number % 2 === 0);
+// console.log(hasEvenNumber)
+
+const currentUserRoles = ["user", "editor", "admin"];
+
+const featureAccessRoles = ["admin", "manager"];
+
+const canAccess = currentUserRoles.some((role) =>
+  featureAccessRoles.includes(role),
+);
+
+// console.log(canAccess);
+
+// const arr = Array.from({ length: 4 }).fill(0);
+// const arr = Array.from({ length: 4 }, (_, i) => i);
+const arr = Array.from([1, 2, 3, 4], (val, i) => val * val);
+// console.log(arr);
+
 const range = (start, stop, step) =>
   Array.from(
     { length: Math.ceil((stop - start) / step) },
     (_, i) => start + i * step,
   );
 
-// console.log(range(0, 11, 2));
-
-const numbers = [1,2 , 5, 3, 7, 5];
-
-const hasEvenNumber = numbers.some((number) => number % 2 === 0);
-console.log(hasEvenNumber)
+console.log(range(0, 11, 2));
