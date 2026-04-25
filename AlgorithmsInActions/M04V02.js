@@ -6,6 +6,8 @@
 //Your task is to write an efficient function that takes both lists as input
 //and returns the total count of users that are present in both lists.
 
+//TODO has to be solved in Time Complexity O(n)
+
 //! Do not change anything in data setup part
 
 //----------Data setup block---------------//
@@ -24,3 +26,48 @@ for (let i = 0; i < USER_COUNT; i++) {
 //----------Data setup block---------------//
 
 // --- ALGORITHMS --- //
+
+const commonFriendsSlow = (usersA, usersB) => {
+  const startTime = performance.now();
+
+  const commonFriends = [];
+
+  //! O(n^2)
+  usersA.forEach((userA) => {
+    //* O(n)
+    usersB.forEach((userB) => {
+      if (userA.id === userB.id) {
+        commonFriends.push(userB);
+      }
+    });
+  });
+
+  const endTime = performance.now();
+
+  return { count: commonFriends.length, timeTookToFinish: endTime - startTime };
+};
+
+// console.log(commonFriendsSlow(usersA, usersB));
+
+const commonFriendsFast = (usersA, usersB) => {
+  const startTime = performance.now();
+
+  const commonFriends = [];
+
+  //* O(n)
+  const idListA = new Set(usersA.map((user) => user.id));
+
+  //* O(n)
+  usersB.forEach((userB) => {
+    //* O(1) lookup
+    if (idListA.has(userB.id)) {
+      commonFriends.push(userB);
+    }
+  });
+
+  const endTime = performance.now();
+
+  return { count: commonFriends.length, timeTookToFinish: endTime - startTime };
+};
+
+console.log(commonFriendsFast(usersA, usersB));
