@@ -4,5 +4,5 @@
   { "id": 3, "name": "Keyboard", "price": 45, "quantity": 15 },
   { "id": 4, "name": "Monitor", "price": 200, "quantity": 8 },
   { "id": 5, "name": "Headphone", "price": 60, "quantity": 12 },
-  { "id": 1778512931939, "name": "DeskTop", "price": 2000, "quantity": 90 }
+  { "id": 1778512931939, "name": "DeskTop 3", "price": 2050, "quantity": 60 }
 ]
