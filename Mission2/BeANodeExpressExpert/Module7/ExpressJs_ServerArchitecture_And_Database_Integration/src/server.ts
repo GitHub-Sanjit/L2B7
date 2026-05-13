@@ -4,16 +4,16 @@ import express, {
   type Response,
 } from "express";
 import { Pool } from "pg";
+import config from "./config";
 const app: Application = express();
-const port = 5000;
+const port = config.port;
 
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
 const pool = new Pool({
-  connectionString:
-    "",
+  connectionString: config.connectionString,
 });
 
 const initDB = async () => {
