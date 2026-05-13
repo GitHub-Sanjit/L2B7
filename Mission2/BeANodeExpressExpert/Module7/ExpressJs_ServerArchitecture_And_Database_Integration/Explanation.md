@@ -46,7 +46,7 @@ import express, {
 } from "express";
 
 const app: Application = express();
-````
+```
 
 ### Middleware
 
@@ -58,8 +58,8 @@ app.use(express.urlencoded({ extended: true }));
 
 ### Why Middleware?
 
-* Parses incoming request body
-* Supports JSON, text, and form data
+- Parses incoming request body
+- Supports JSON, text, and form data
 
 ---
 
@@ -75,8 +75,8 @@ const pool = new Pool({
 
 ### Why Pool?
 
-* Handles multiple DB connections efficiently
-* Improves performance
+- Handles multiple DB connections efficiently
+- Improves performance
 
 ---
 
@@ -139,7 +139,7 @@ app.post("/api/users", async (req: Request, res: Response) => {
       `INSERT INTO users(name, email, password, age)
        VALUES($1, $2, $3, $4)
        RETURNING *`,
-      [name, email, password, age]
+      [name, email, password, age],
     );
 
     res.status(201).json({
@@ -157,8 +157,8 @@ app.post("/api/users", async (req: Request, res: Response) => {
 
 ### Key Points:
 
-* Parameterized query → prevents SQL Injection
-* `RETURNING *` → returns inserted data
+- Parameterized query → prevents SQL Injection
+- `RETURNING *` → returns inserted data
 
 ---
 
@@ -192,10 +192,7 @@ app.get("/api/users/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const result = await pool.query(
-      `SELECT * FROM users WHERE id=$1`,
-      [id]
-    );
+    const result = await pool.query(`SELECT * FROM users WHERE id=$1`, [id]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({
@@ -236,7 +233,7 @@ app.put("/api/users/:id", async (req: Request, res: Response) => {
            is_active=COALESCE($4, is_active)
        WHERE id=$5
        RETURNING *`,
-      [name, password, age, is_active, id]
+      [name, password, age, is_active, id],
     );
 
     if (result.rows.length === 0) {
@@ -262,8 +259,8 @@ app.put("/api/users/:id", async (req: Request, res: Response) => {
 
 ### COALESCE Explained:
 
-* Keeps existing value if new value is `null`
-* Enables partial updates
+- Keeps existing value if new value is `null`
+- Enables partial updates
 
 ---
 
@@ -276,7 +273,7 @@ app.delete("/api/users/:id", async (req: Request, res: Response) => {
   try {
     const result = await pool.query(
       `DELETE FROM users WHERE id=$1 RETURNING *`,
-      [id]
+      [id],
     );
 
     if (result.rows.length === 0) {
@@ -310,8 +307,8 @@ const connectionString = config.connectionString;
 
 ### Why Important?
 
-* Keeps credentials secure
-* Supports multiple environments (dev, prod)
+- Keeps credentials secure
+- Supports multiple environments (dev, prod)
 
 ---
 
@@ -332,8 +329,8 @@ app.get("/user", (req: Request, res: Response) => {
 
 ## ❌ 1. Password Security
 
-* Currently stored as plain text ❌
-* Should use hashing (bcrypt)
+- Currently stored as plain text ❌
+- Should use hashing (bcrypt)
 
 ---
 
@@ -342,21 +339,23 @@ app.get("/user", (req: Request, res: Response) => {
 Avoid:
 
 ```ts
-message: { Error: error }
+message: {
+  Error: error;
+}
 ```
 
 Use:
 
 ```ts
-message: error.message
+message: error.message;
 ```
 
 ---
 
 ## ❌ 3. Validation Missing
 
-* No input validation
-* Should validate email, password, etc.
+- No input validation
+- Should validate email, password, etc.
 
 ---
 
@@ -376,13 +375,13 @@ src/
 
 # 🧠 What You Learned
 
-* Express server with TypeScript
-* Middleware usage
-* PostgreSQL integration
-* SQL queries & data types
-* CRUD operations
-* Error handling basics
-* Environment configuration
+- Express server with TypeScript
+- Middleware usage
+- PostgreSQL integration
+- SQL queries & data types
+- CRUD operations
+- Error handling basics
+- Environment configuration
 
 ---
 
@@ -390,12 +389,12 @@ src/
 
 To move toward real-world backend:
 
-* Add **MVC Architecture**
-* Use **bcrypt** for password hashing
-* Add **JWT Authentication**
-* Use **Zod/Joi** for validation
-* Add **global error handler**
-* Add **pagination & filtering**
+- Add **MVC Architecture**
+- Use **bcrypt** for password hashing
+- Add **JWT Authentication**
+- Use **Zod/Joi** for validation
+- Add **global error handler**
+- Add **pagination & filtering**
 
 ---
 
@@ -403,14 +402,10 @@ To move toward real-world backend:
 
 You built a complete backend system with:
 
-* REST API
-* Database integration
-* Full CRUD functionality
+- REST API
+- Database integration
+- Full CRUD functionality
 
 This is the **foundation of real backend development**.
 
 ---
-
-```
-
-
