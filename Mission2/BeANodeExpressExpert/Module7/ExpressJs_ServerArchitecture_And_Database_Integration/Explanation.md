@@ -413,11 +413,4 @@ This is the **foundation of real backend development**.
 
 ```
 
----
 
-If you want next, I can:
-- :contentReference[oaicite:0]{index=0}
-- Or :contentReference[oaicite:1]{index=1}
-
-Just tell me 👍
-```
