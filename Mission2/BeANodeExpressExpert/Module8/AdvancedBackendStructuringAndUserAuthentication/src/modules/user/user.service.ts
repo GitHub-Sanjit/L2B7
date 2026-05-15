@@ -42,22 +42,22 @@ const updateUserFromDB = async (id: string, payload: any) => {
   return result;
 };
 
-const deleteUserFromDB1 = async (id: string) => {
-  const result = await pool.query(
-    `
-            SELECT * FROM users WHERE id=$1
-            `,
-    [id],
-  );
-  const result2 = await pool.query(
-    `
-            DELETE FROM users WHERE id=$1
-            `,
-    [id],
-  );
-  console.log("deleteUserFromDB", result);
-  return result;
-};
+// const deleteUserFromDB1 = async (id: string) => {
+//   const result = await pool.query(
+//     `
+//             SELECT * FROM users WHERE id=$1
+//             `,
+//     [id],
+//   );
+//   const result2 = await pool.query(
+//     `
+//             DELETE FROM users WHERE id=$1
+//             `,
+//     [id],
+//   );
+//   // console.log("deleteUserFromDB", result);
+//   return result;
+// };
 
 const deleteUserFromDB = async (id: string) => {
   const result = await pool.query(
@@ -69,7 +69,7 @@ const deleteUserFromDB = async (id: string) => {
     [id],
   );
 
-  console.log("Deleted user:", result.rows[0]);
+  // console.log("Deleted user:", result.rows[0]);
   return result;
 };
 
