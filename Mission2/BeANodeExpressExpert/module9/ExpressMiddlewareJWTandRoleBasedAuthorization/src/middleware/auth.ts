@@ -5,8 +5,14 @@ import { pool } from "../db";
 
 const auth = () => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    // console.log("This is Protected Route");
+    try {
+        // console.log("This is Protected Route");
     // console.log(req.headers.authorization);
+
+    //* check if the token exists
+    //* verify the token
+    //* find the user into database
+    //* if the user active or not
     const token = req.headers.authorization;
     console.log(token);
     if (!token) {
@@ -41,7 +47,12 @@ const auth = () => {
         message: "Forbidden!!",
       });
     }
+
+    req.user = decoded
     next();
+    } catch (error) {
+        next(error)
+    }
   };
 };
 
