@@ -1,0 +1,8 @@
+Method -> GET  Time -> 1779031824890 URL -> /userMethod -> GET  Time -> 1779031825497 URL -> /meta.jsonMethod -> GET  Time -> 1779031902594 URL -> /usersMethod -> GET  Time -> 1779031902815 URL -> /meta.jsonMethod -> GET  Time -> 1779031917409 URL -> /api/usersMethod -> GET  Time -> 1779031920220 URL -> /meta.jsonMethod -> GET  Time -> 1779031931405 URL -> /api/auth/logoutMethod -> GET  Time -> 1779031931597 URL -> /meta.json
+ Method -> GET  Time -> 1779031970609 URL -> /api/auth/logout
+
+ Method -> GET  Time -> 1779031970808 URL -> /meta.json
+
+ Method -> GET  Time -> 1779031976642 URL -> /api/users
+
+ Method -> GET  Time -> 1779031977148 URL -> /meta.json
