@@ -22,7 +22,7 @@ const loginUserIntoDB = async (payload: {
   }
   const user = await userData.rows[0];
   const matchedPassword = await bcrypt.compare(password, user.password);
-  console.log(matchedPassword);
+  // console.log(matchedPassword);
   if (!matchedPassword) {
     throw new Error("Invalid Credentials");
   }
@@ -32,6 +32,7 @@ const loginUserIntoDB = async (payload: {
     name: user.name,
     is_active: user.is_active,
     email: user.email,
+    role: user.role,
   };
   const accessToken = jwt.sign(jwtPayload, config.secret as string, {
     expiresIn: "1d",

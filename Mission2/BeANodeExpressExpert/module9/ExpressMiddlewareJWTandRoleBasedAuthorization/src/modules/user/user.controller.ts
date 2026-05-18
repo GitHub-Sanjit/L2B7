@@ -1,10 +1,9 @@
 import type { Request, Response } from "express";
-import { pool } from "../../db";
 import { userServices } from "./user.service";
 
 const createUser = async (req: Request, res: Response) => {
-  //   console.log(req.body);
-  const { name, email, password, age } = req.body;
+  // console.log(req.body);
+  const { name, email, password, age, role } = req.body;
 
   try {
     const result = await userServices.createUserIntoDB({
@@ -12,6 +11,7 @@ const createUser = async (req: Request, res: Response) => {
       email,
       password,
       age,
+      role,
     });
 
     res.status(201).json({
@@ -32,7 +32,7 @@ const getAllUsers = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: "Users retrived successfully",
-      data: (await result).rows,
+      data:  result.rows,
     });
   } catch (error: any) {
     res.status(500).json({
