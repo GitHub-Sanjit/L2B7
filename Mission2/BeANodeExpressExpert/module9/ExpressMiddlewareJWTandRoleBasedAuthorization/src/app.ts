@@ -37,6 +37,6 @@ app.use("/api/users", userRoute);
 app.use("/api/profiles", profileRoute);
 app.use("/api/auth", authRouter);
 
-app.use(globalErrorHandler());
+app.use(globalErrorHandler);
 
 export default app;

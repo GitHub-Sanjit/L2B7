@@ -140,3 +140,7 @@ Method -> GET  Time -> 1779031824890 URL -> /userMethod -> GET  Time -> 17790318
  Method -> GET  Time -> 1779088556734 URL -> /api/users
 
  Method -> GET  Time -> 1779088606600 URL -> /api/users
+
+ Method -> POST  Time -> 1779090332377 URL -> /api/users
+
+ Method -> POST  Time -> 1779090354613 URL -> /api/users

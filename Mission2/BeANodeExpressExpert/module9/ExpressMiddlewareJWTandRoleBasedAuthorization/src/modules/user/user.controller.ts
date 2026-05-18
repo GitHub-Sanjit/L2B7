@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import { userServices } from "./user.service";
+import { sendResponse } from "../../utility/sendResponse";
 
 const createUser = async (req: Request, res: Response) => {
   // console.log(req.body);
@@ -13,14 +14,17 @@ const createUser = async (req: Request, res: Response) => {
       age,
       role,
     });
-
-    res.status(201).json({
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
       message: "User Created Successfully",
       data: result.rows[0],
     });
-  } catch (error) {
-    res.status(500).json({
-      message: { Error: error },
+  } catch (error: any) {
+    sendResponse(res, {
+      statusCode: 500,
+      success: false,
+      message: error.message,
       data: error,
     });
   }
@@ -32,7 +36,7 @@ const getAllUsers = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: "Users retrived successfully",
-      data:  result.rows,
+      data: result.rows,
     });
   } catch (error: any) {
     res.status(500).json({
