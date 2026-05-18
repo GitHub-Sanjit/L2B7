@@ -23,6 +23,26 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+const refreshToken = async (req: Request, res: Response) => {
+  // console.log("Refresh Token",req.cookies);
+  try {
+    const result = await authServices.generateRefreshToken(
+      req.cookies.refreshToken,
+    );
+
+    res.status(201).json({
+      message: "Access Token Generated",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: { Error: error },
+      data: error,
+    });
+  }
+};
+
 export const authController = {
   loginUser,
+  refreshToken,
 };
