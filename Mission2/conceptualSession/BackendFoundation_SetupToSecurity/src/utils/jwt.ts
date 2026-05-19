@@ -1,6 +1,12 @@
 import config from "../config";
 import type { RUser } from "../types";
-import jwt from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
+
+export const verifyToken = (token: string, type: "access" | "refresh") => {
+  const secret = type === "access" ? config.jwt_secret : config.refresh_secret;
+  const decode = jwt.verify(token, secret);
+  return decode as JwtPayload;
+};
 
 export const signToken = (payload: RUser & { id: number }) => {
   // accessToken
