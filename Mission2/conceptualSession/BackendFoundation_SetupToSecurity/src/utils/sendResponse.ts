@@ -3,7 +3,7 @@ import type { Response } from "express";
 export function sendResponse<T>(
   res: Response,
   { message, data, error }: { message: unknown; data?: T; error?: boolean },
-  status: 200,
+  status: number,
 ) {
   res.status(status).json({
     success: error ? false : true,

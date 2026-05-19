@@ -6,24 +6,24 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  passwordHash: string;
+  password_hash: string;
   age: number;
   role: Role;
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
 };
 
 export type RUser = Omit<
   User,
-  "id" | "createdAt" | "updatedAt" | "passwordHash"
+  "id" | "created_at" | "updated_at" | "password_hash"
 >;
 
 export type Order = {
   id: number;
-  customerUd: number;
+  customer_id: number;
   quantity: number;
   food: string;
   price: number;
-  createdAt: Date; 
-  updatedAt: Date;
+  created_at: Date; 
+  updated_at: Date;
 };
