@@ -37,14 +37,22 @@ Your project must include:
 - **quantity** (number) — Mandatory. Positive integer representing the number of copies borrowed.
 - **dueDate** (date) — Mandatory. The date by which the book must be returned.
 
-### Generic Error Response
+✅ Generic Error Response (pg-based)
 ```json
 {
-  "message": "Validation failed",
+  "message": "Database operation failed",
   "success": false,
   "error": {
-    "name": "ValidationError",
-    "details": "Copies must be a positive number"
+    "type": "DatabaseError",
+    "code": "23514",
+    "constraint": "books_copies_check",
+    "details": [
+      {
+        "field": "copies",
+        "message": "Copies must be a positive number",
+        "value": -5
+      }
+    ]
   }
 }
 ```
